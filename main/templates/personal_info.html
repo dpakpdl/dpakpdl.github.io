@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <img class="card-img-top" src="{% static 'img/my_photo.jpg' %}">
+            <div class="card-body">
+                <h5 class="card-title">{{ user.name }}</h5>
+                <h6 class="card-title">{{ user.title }}</h6>
+            </div>
+        </div>
+        <div class="card mb-2">
+            <div class="card-body">
+                <h5 class="card-title">Contact</h5>
+                {% for contact in contacts %}
+                    <h5 class="card-title">{{ contact.address_type }}</h5>
+                    <p class="card-text" type="email">{{ contact.email }}</p>
+                    <p class="card-text">{{ contact.phone }}</p>
+                    <p class="card-text">{{ contact.address }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card mb-2">
+            <div class="card-body">
+                <p class="card-text">{{ user.about }}</p>
+            </div>
+        </div>
+        <div class="card mb-2">
+            <div class="card-body">
+                <h5 class="card-title">Education</h5>
+                {% for education in educations %}
+                    <p class="card-text">{{ education.degree }} in {{ education.course }}, {{ education.institution }}</p>
+                {% endfor %}
+
+            </div>
+        </div>
+        <div class="card mb-2">
+            <div class="card-body">
+                <h5 class="card-title">Work Experience</h5>
+                {% for experience in experiences %}
+                    <p class="card-text">{{ experience.title }}, {{ experience.company }}, {{ experience.start_date }}-{{ experience.end_date }}</p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="card mb-2">
+            <div class="card-body">
+                <h5 class="card-title">Awards and Honors</h5>
+                {% for award in awards %}
+                    <p class="card-text">{{ award.title }}, {{ award.description }}, {{ award.date }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
